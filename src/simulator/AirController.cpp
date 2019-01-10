@@ -27,6 +27,9 @@
 #include "Flight.h"
 #include "Position.h"
 #include <list>
+#include <fstream>
+
+namespace atcsim{
 
 AirController::AirController() {
 	// TODO Auto-generated constructor stub
@@ -40,6 +43,7 @@ AirController::~AirController() {
 void
 AirController::doWork()
 {
+<<<<<<< HEAD
 			std::list<Flight*> flights = Airport::getInstance()->getFlights();
 			std::list<Flight*>::iterator it;
 
@@ -155,5 +159,37 @@ AirController::doWork()
 					}
 				}
 			}
+=======
+  std::list<Flight*> flights = Airport::getInstance()->getFlights();
+  std::list<Flight*>::iterator it;
 
+  Position pos0(3500.0, 0.0, 100.0);
+  Position pos1(1500.0, 0.0, 50.0);
+  Position pos2(200.0, 0.0, 25.0);
+  Position pos3(-750.0, 0.0, 25.0);
+
+  Route r0, r1, r2, r3;
+
+  r0.pos = pos0;
+  r0.speed = 150.0;
+  r1.pos = pos1;
+  r1.speed = 100.0;
+  r2.pos = pos2;
+  r2.speed = 70.0;
+  r3.pos = pos3;
+  r3.speed = 10.0;
+>>>>>>> 68f46c762675934399ff0a72ce66fd2dc1689a3a
+
+  for(it = flights.begin(); it!=flights.end(); ++it)
+  {
+    if((*it)->getRoute()->empty())
+    {
+      (*it)->getRoute()->push_back(r3);
+      (*it)->getRoute()->push_front(r2);
+      (*it)->getRoute()->push_front(r1);
+      (*it)->getRoute()->push_front(r0);
+		}
+	}
 }
+
+}  // namespace atcsim

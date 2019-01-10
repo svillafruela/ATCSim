@@ -61,6 +61,7 @@ public:
 	virtual int getPoints(const Ice::Current&);
 
   void book_landing() {any_landing_ = true;}
+	void unbook_landing() {any_landing_ = false;}
   bool is_booked_landing() { return any_landing_;}
 
 

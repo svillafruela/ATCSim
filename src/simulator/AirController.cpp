@@ -43,7 +43,6 @@ AirController::~AirController() {
 void
 AirController::doWork()
 {
-<<<<<<< HEAD
 			std::list<Flight*> flights = Airport::getInstance()->getFlights();
 			std::list<Flight*>::iterator it;
 
@@ -57,15 +56,22 @@ AirController::doWork()
 			Position pos_circuito_3(1000.0, -1000.0, 2000.0);
 			Position pos_circuito_4(1000.0, -15000.0, 2000.0);
 
-			Position pos_circuito_5(15000.0, -1000.0, 1000.0);
-			Position pos_circuito_6(15000.0, -15000.0, 1000.0);
-			Position pos_circuito_7(1000.0, -1000.0, 1000.0);
-			Position pos_circuito_8(1000.0, -15000.0, 1000.0);
+			Position pos_circuito_5(15000.0, -1000.0, 500.0);
+			Position pos_circuito_6(15000.0, -15000.0, 500.0);
+			Position pos_circuito_7(1000.0, -1000.0, 500.0);
+			Position pos_circuito_8(1000.0, -15000.0, 500.0);
 
-			Position pos_circuito_9(15000.0, -1000.0, 500.0);
-			Position pos_circuito_10(15000.0, -15000.0, 500.0);
-			Position pos_circuito_11(1000.0, -1000.0, 500.0);
-			Position pos_circuito_12(1000.0, -15000.0, 500.0);
+			Position pos_circuito2_1(15000.0, 1000.0, 2000.0);
+			Position pos_circuito2_2(15000.0, 15000.0, 2000.0);
+			Position pos_circuito2_3(1000.0, 1000.0, 2000.0);
+			Position pos_circuito2_4(1000.0, 15000.0, 2000.0);
+
+			Position pos_circuito2_5(15000.0, 1000.0, 500.0);
+			Position pos_circuito2_6(15000.0, 15000.0, 500.0);
+			Position pos_circuito2_7(1000.0, 1000.0, 500.0);
+			Position pos_circuito2_8(1000.0, 15000.0, 500.0);
+
+
 
 
 
@@ -76,7 +82,9 @@ AirController::doWork()
 
 			Route rc0, rc1, rc2, rc3;
 			Route rc4, rc5, rc6, rc7;
-			Route rc8, rc9, rc10, rc11;
+
+			Route rc20, rc21, rc22, rc23;
+			Route rc24, rc25, rc26, rc27;
 
 			ra0.pos = pos_aterrizaje_0;
 			ra0.speed = 150.0;
@@ -105,19 +113,30 @@ AirController::doWork()
 			rc3.pos = pos_circuito_4;
 			rc3.speed = 200.0;
 
-			rc8.pos = pos_circuito_9;
-			rc8.speed = 200.0;
-			rc9.pos = pos_circuito_10;
-			rc9.speed = 200.0;
-			rc10.pos = pos_circuito_11;
-			rc10.speed = 200.0;
-			rc11.pos = pos_circuito_12;
-			rc11.speed = 200.0;
+			rc24.pos = pos_circuito2_5;
+			rc24.speed = 200.0;
+			rc25.pos = pos_circuito2_6;
+			rc25.speed = 200.0;
+			rc26.pos = pos_circuito2_7;
+			rc26.speed = 200.0;
+			rc27.pos = pos_circuito2_8;
+			rc27.speed = 200.0;
+
+			rc20.pos = pos_circuito2_1;
+			rc20.speed = 200.0;
+			rc21.pos = pos_circuito2_2;
+			rc21.speed = 200.0;
+			rc22.pos = pos_circuito2_3;
+			rc22.speed = 200.0;
+			rc23.pos = pos_circuito2_4;
+			rc23.speed = 200.0;
 
 
 
 
-			if (Airport::getInstance()->is_booked_landing())
+
+
+			if (!Airport::getInstance()->is_booked_landing())
 			{
 				Flight* primero = *(flights.begin());
 
@@ -134,7 +153,15 @@ AirController::doWork()
 					if (Airport::getInstance()->is_booked_landing())
 					{
 						 if ((*it)-> getPosition().get_y() >= 0) {
-							
+							 (*it)->getRoute()->push_back(rc20);
+							 (*it)->getRoute()->push_back(rc21);
+							 (*it)->getRoute()->push_back(rc22);
+							 (*it)->getRoute()->push_back(rc23);
+							 (*it)->getRoute()->push_back(rc24);
+							 (*it)->getRoute()->push_back(rc25);
+							 (*it)->getRoute()->push_back(rc26);
+							 (*it)->getRoute()->push_back(rc27);
+
 						 }else{
 							 (*it)->getRoute()->push_back(rc0);
 							 (*it)->getRoute()->push_back(rc1);
@@ -144,52 +171,17 @@ AirController::doWork()
 							 (*it)->getRoute()->push_back(rc5);
 							 (*it)->getRoute()->push_back(rc6);
 							 (*it)->getRoute()->push_back(rc7);
-							 (*it)->getRoute()->push_back(rc8);
-							 (*it)->getRoute()->push_back(rc9);
-							 (*it)->getRoute()->push_back(rc10);
-							 (*it)->getRoute()->push_back(rc11);
+
 						 }
-					}else
-					{
+					}else{
 						Airport::getInstance()->book_landing();
-						(*it)->getRoute()->push_back(ra3);
-						(*it)->getRoute()->push_back(ra2);
-						(*it)->getRoute()->push_back(ra1);
 						(*it)->getRoute()->push_back(ra0);
+						(*it)->getRoute()->push_back(ra1);
+						(*it)->getRoute()->push_back(ra2);
+						(*it)->getRoute()->push_back(ra3);
 					}
 				}
 			}
-=======
-  std::list<Flight*> flights = Airport::getInstance()->getFlights();
-  std::list<Flight*>::iterator it;
-
-  Position pos0(3500.0, 0.0, 100.0);
-  Position pos1(1500.0, 0.0, 50.0);
-  Position pos2(200.0, 0.0, 25.0);
-  Position pos3(-750.0, 0.0, 25.0);
-
-  Route r0, r1, r2, r3;
-
-  r0.pos = pos0;
-  r0.speed = 150.0;
-  r1.pos = pos1;
-  r1.speed = 100.0;
-  r2.pos = pos2;
-  r2.speed = 70.0;
-  r3.pos = pos3;
-  r3.speed = 10.0;
->>>>>>> 68f46c762675934399ff0a72ce66fd2dc1689a3a
-
-  for(it = flights.begin(); it!=flights.end(); ++it)
-  {
-    if((*it)->getRoute()->empty())
-    {
-      (*it)->getRoute()->push_back(r3);
-      (*it)->getRoute()->push_front(r2);
-      (*it)->getRoute()->push_front(r1);
-      (*it)->getRoute()->push_front(r0);
-		}
-	}
 }
 
 }  // namespace atcsim

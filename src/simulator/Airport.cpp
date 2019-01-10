@@ -257,19 +257,30 @@ std::list<Flight*>::iterator
 Airport::removeFlight(std::string id)
 {
 	std::list<Flight*>::iterator it;
+	std::list<Flight*>::iterator first;
 
 	it=flights.begin();
-
+	first = flights.begin();
 	while(it !=  flights.end())
 	{
 		if((*it)->getId().compare(id) == 0)
 		{
-			if((*it)==(*focus))
+			if((*it)==(*focus) && (*it)==(*first))
 			{
 				delete(*it);
 				focus = flights.erase(it);
 				(*focus)->setFocused(true);
+				unbook_landing();
 				return focus;
+			}else if((*it)==(*focus)){
+				delete(*it);
+				(*focus)->setFocused(true);
+				return focus;
+			}else if((*it)==(*first)){
+				delete(*it);
+				it = flights.erase(it);
+				unbook_landing();
+				return it;
 			}else
 			{
 				delete(*it);
